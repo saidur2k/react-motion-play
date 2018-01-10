@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { TransitionMotion, spring } from 'react-motion'
-
+import ListForm from './ListForm'
 export default class List extends Component {
   constructor (props) {
     super(props)
@@ -97,10 +97,7 @@ export default class List extends Component {
     return (
       <div>
         <h1>My things to do</h1>
-        <form onSubmit={(event) => this.add(event)}>
-          <input type='text' onChange={input => this.textChange(input.target.value)} value={this.state.newTodo} />
-          <button type='submit'> New Todo</button>
-        </form>
+        <ListForm textChange={this.textChange.bind(this)} add={this.add.bind(this)} newTodo={this.state.newTodo} />
         {this.listAll()}
       </div>
     )
